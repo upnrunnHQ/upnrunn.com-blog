@@ -16,6 +16,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
+        // Provided option so that rest api uri
         $this->rest_url = config('constants.rest-api-url');
     }
     // Listing all posts
