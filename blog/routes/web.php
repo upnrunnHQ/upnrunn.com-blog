@@ -11,9 +11,10 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
+$router->get('/', 'PostsController@viewposts');
 // Get All Posts Route
 $router->get('/getposts', 'PostsController@viewposts');
 // Get Single Post By provided ID
