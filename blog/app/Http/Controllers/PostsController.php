@@ -1,5 +1,5 @@
 <?php
-
+// Cotroller file to have listing for Posts using Rest API
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -24,14 +24,13 @@ class PostsController extends Controller
     {
         $url = $this->rest_url . "/wp-json/wp/v2/posts?_embed";
         $json = json_decode(file_get_contents($url), true);
-        //dd($json);
-        return view('home', ['posts'=> $json]);
+        return view('home', ['posts'=> $json, 'page_title' => 'UpNRunn Blog']);
     }
     // Retrieve single post
     public function singlepost(Request $request, $post_id) 
     {
         $url = $this->rest_url . "/wp-json/wp/v2/posts/".$post_id."?_embed";
         $json = json_decode(file_get_contents($url), true);
-        return view('post', ['post'=> $json]);
+        return view('post', [ 'post'=> $json, 'page_title' => 'UpNRunn Blog :: '.$json['title']['rendered'] ]);
     }
 }
